@@ -27,8 +27,7 @@ This repository contains **toy implementations** of the concepts introduced in t
 
 2. **Run the Autoencoder Example**
 
-`python vortexnet.py --epochs 5 --batch_size 64 --lr 1e-3 \
-    --hidden_dim 32 --pde_steps 3 --adaptive_damping`
+   `python vortexnet.py`
 
 3. **Inspect Results**
 
