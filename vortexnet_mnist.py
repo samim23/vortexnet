@@ -319,8 +319,14 @@ def main():
     # -------------------------------------------------------------------------
     # 1) Save a grid of original and reconstructed images to disk
     # -------------------------------------------------------------------------
-    vutils.save_image(sample_imgs, "original_samples.png", nrow=8, normalize=True)
-    vutils.save_image(recons, "reconstructed_samples.png", nrow=8, normalize=True)
+    output_dir = 'outputs'
+    os.makedirs(output_dir, exist_ok=True)
+    original_image_path = os.path.join(output_dir, "original_samples.png")
+    reconstructed_image_path = os.path.join(output_dir, "reconstructed_samples.png")
+
+    vutils.save_image(sample_imgs, original_image_path, nrow=8, normalize=True)
+    vutils.save_image(recons, reconstructed_image_path, nrow=8, normalize=True)
+
     print("Saved 'original_samples.png' and 'reconstructed_samples.png'")
 
     # -------------------------------------------------------------------------

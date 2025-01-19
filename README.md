@@ -1,35 +1,70 @@
 # VortexNet: Neural Computing through Fluid Dynamics
 
-This repository contains **toy implementations** of the concepts introduced in the research paper [VortexNet: Neural Computing through Fluid Dynamics](https://samim.io/p/2025-01-18-vortextnet/). While not a production-ready package, these examples illustrate how PDE-based vortex layers and fluid-inspired mechanisms can be embedded into a neural architecture (e.g., an autoencoder on MNIST).
+This repository contains **toy implementations** of the concepts introduced in the research paper [VortexNet: Neural Computing through Fluid Dynamics](https://samim.io/p/2025-01-18-vortextnet/). These examples demonstrate how PDE-based vortex layers and fluid-inspired mechanisms can be integrated into neural architectures, such as autoencoders for different datasets.
+
+> **Note**: These are **toy prototypes** for educational purposes and are _not_ intended as fully optimized or physically precise fluid solvers.
 
 ## Contents
 
-- `vortexnet.py`:  
-  A demonstration script showing how to:
-  1. Define vortex-style PDE layers using PyTorch (with Laplacian and advection terms).
-  2. Integrate an optional adaptive damping mechanism.
-  3. Build a simple autoencoder leveraging these PDE blocks for image reconstruction on MNIST.
-
-> **Note**: This is a **toy prototype** for educational purposes. It is _not_ intended as a fully optimized or physically precise fluid solver.
+- [`vortexnet_mnist.py`](#vortexnet_mnistpy):  
+  A demonstration script for building and training a VortexNet Autoencoder on the MNIST dataset.
+- [`vortexnext_image.py`](#vortexnext_imagepy):  
+  An advanced script for building and training a VortexNet Autoencoder on custom image datasets with enhanced features like data augmentation and latent space interpolation.
 
 ## Getting Started
 
-1. **Install Dependencies**
+### 1. Clone the Repository
 
-   - Python 3.8+
-   - PyTorch (1.11+ recommended)
-   - torchvision (for MNIST and `save_image`)
-   - matplotlib (optional, for visualization)
+```bash
+git clone https://github.com/samim23/vortexnet.git
+cd vortexnet
+```
 
-   ```bash
-   pip install torch torchvision matplotlib
-   ```
+### 2. Install Dependencies
 
-2. **Run the Autoencoder Example**
+Ensure you have Python 3.8+ installed. Install the required Python packages using `pip`:
 
-   `python vortexnet.py`
+```bash
+pip install torch torchvision matplotlib pyyaml scikit-learn seaborn tensorboard
+```
 
-3. **Inspect Results**
+### 3. Prepare the Data
 
-   - After training, the script saves and optionally displays reconstructed images (as PNG files or via matplotlib).
-   - You should see console logs for training loss and reconstruction loss.
+- **MNIST Dataset**:  
+  The MNIST dataset will be automatically downloaded by `vortexnet_mnist.py` if not already present.
+
+- **Custom Image Dataset**:  
+  For `vortexnext_image.py`, place your images (JPEG, PNG, or JPEG formats) inside the `my_data/` directory.
+
+### 4. Run the Scripts
+
+#### a. VortexNet MNIST Autoencoder (`vortexnet_mnist.py`)
+
+This script builds and trains a VortexNet Autoencoder on the MNIST dataset.
+
+**Usage:**
+
+```bash
+python3.11 vortexnet_mnist.py
+```
+
+#### b. VortexNet Image Autoencoder (`vortexnext_image.py`)
+
+This advanced script builds and trains a VortexNet Autoencoder on custom image datasets with enhanced features.
+
+**Usage:**
+
+```bash
+python3.11 vortexnext_image.py --config config_image.yaml
+```
+
+## Notes
+
+- **Configuration Files**:  
+  Ensure the configuration file (`config_image.yaml`) is properly set up before running the scripts.
+
+- **Output Directory**:  
+  All outputs, including logs, reconstructed images, and model checkpoints, are saved in the `output_dir` specified in the respective configuration files.
+
+- **TensorBoard**:  
+  For monitoring training progress, you can launch TensorBoard pointing to the `output_dir`

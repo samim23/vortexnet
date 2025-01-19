@@ -1,0 +1,36 @@
+# config.yaml
+training:
+  epochs: 150
+  batch_size: 8
+  lr: 0.0001
+  weight_decay: 1e-4
+  log_interval: 1
+  save_interval: 10
+  reconstruction_interval: 1
+  use_mixed_precision: false
+  warmup_steps: 100
+  gradient_clip: 0.1
+
+model:
+  hidden_dim: 128
+  pde_channels: 32
+  pde_steps: 5
+  use_adaptive_damping: true
+
+data:
+  data_dir: "my_data"
+  output_dir: "outputs"
+  augmentation: true
+  image_size: 128
+
+interpolation:
+  steps: 15
+
+optimization:
+  use_gradient_clipping: true
+  clip_value: 0.1
+  use_layer_norm: true
+  beta1: 0.9
+  beta2: 0.999
+  use_scheduler: true
+  min_lr: 1e-6
